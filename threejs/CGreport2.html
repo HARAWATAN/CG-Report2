@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>sample1</title>
+  <title>CG_Report2</title>
 
   <!-- three.jsを読み込む(ローカル) -->
   <!-- <script src="./three.js"></script> -->
@@ -74,11 +74,18 @@
     scene.add(circle3);
     scene.add(circle4);
 
-    // 円柱作成
+    // 円錐作成
     var conegeometry = new THREE.ConeGeometry(0.5, 2, 5);
     var cone = new THREE.Mesh(conegeometry, material);
     cone.position.set(0, -0.5, 0);
     scene.add(cone);
+
+    // 円柱作成
+    var cylindergeometry = new THREE.CylinderGeometry(0.5, 0.5, 1, 4);
+    var cylindermaterial = new THREE.MeshPhongMaterial({ color: 0xff0000, wireframe: true});
+    var cylinder = new THREE.Mesh(cylindergeometry, cylindermaterial);
+    cylinder.position.set(0, -3, 0);
+    scene.add(cylinder);
 
     // ドーナツ作成
     var ringgeometry = new THREE.TorusGeometry(1, 0.2, 6, 12);
@@ -114,6 +121,7 @@
         circle4.position.x += 4;
       }
       
+      cylinder.rotation.x += 1;
 
       renderer.render(scene, camera);
     };
